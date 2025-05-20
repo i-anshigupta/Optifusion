@@ -20,7 +20,7 @@ const blogPosts = [
     title: 'How AI is Transforming Digital Marketing Strategies',
     excerpt: 'Discover how artificial intelligence is revolutionizing digital marketing and how businesses can leverage it for better results.',
     image: 'https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    author: 'Ankit Patel',
+    author: 'Varun Bhardwaj',
     date: 'April 8, 2025',
     category: 'Marketing',
     readTime: '7 min read'

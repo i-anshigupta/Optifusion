@@ -9,7 +9,7 @@ const Logo = () => {
       <img src={logo} alt="Optifusion Logo" className="w-15 h-20 object-contain" />
 
       {/* Text */}
-      <span className="text-xl font-bold text-neutral-900">
+      <span className="lg:text-md xl:text-xl font-bold text-neutral-900">
         Optifusion <span className="text-rose-500">Technologies</span>
       </span>
     </Link>

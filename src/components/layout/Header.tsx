@@ -41,7 +41,7 @@ const Header = ({ scrolled, openServicesModal }: HeaderProps) => {
               key={path}
               to={path}
               className={({ isActive }) =>
-                `text-lg font-medium hover:text-rose-500 transition-colors ${
+                `lg:text-md xl:text-lg font-medium hover:text-rose-500 transition-colors ${
                   isActive ? 'text-rose-500' : 'text-gray-700'
                 }`
               }

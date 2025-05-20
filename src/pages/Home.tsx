@@ -1,18 +1,23 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import HeroSection from '../components/home/HeroSection';
 import ClientShowcase from '../components/home/ClientShowcase';
 import SectionHeading from '../components/common/SectionHeading';
 import ServicesList from '../components/services/ServicesList';
 import { ChevronRight, MessageSquare } from 'lucide-react';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { LayoutContext } from '../contexts/LayoutContext';
 
 const Counter = ({ target }: { target: number }) => {
   const ref = useRef<HTMLSpanElement>(null);
+  const inViewRef = useRef(null);
+  const isInView = useInView(inViewRef, { once: false });
+  const [key, setKey] = useState(0); // Force re-run of animation
 
   useEffect(() => {
+    if (!isInView) return;
+
     let start = 0;
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const startTime = performance.now();
 
     const step = (timestamp: number) => {
@@ -24,9 +29,24 @@ const Counter = ({ target }: { target: number }) => {
     };
 
     requestAnimationFrame(step);
-  }, [target]);
+  }, [isInView, key, target]);
 
-  return <span ref={ref}>0</span>;
+  useEffect(() => {
+    if (isInView) {
+      setKey(prev => prev + 1); // Trigger re-run
+    }
+  }, [isInView]);
+
+  return (
+    <span
+      ref={(node) => {
+        ref.current = node;
+        inViewRef.current = node;
+      }}
+    >
+      0
+    </span>
+  );
 };
 
 const Home = () => {
@@ -63,7 +83,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               <div className="text-4xl md:text-5xl font-bold mb-2">
                 <Counter target={500} />
@@ -75,7 +95,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               <div className="text-4xl md:text-5xl font-bold mb-2">
                 <Counter target={750} />
@@ -87,7 +107,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               <div className="text-4xl md:text-5xl font-bold mb-2">
                 <Counter target={4} />
@@ -99,7 +119,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               <div className="text-4xl md:text-5xl font-bold mb-2">
                 <Counter target={25} />

@@ -1,5 +1,9 @@
 import { motion } from 'framer-motion';
 import HeroAnimation from './HeroAnimation';
+import Img1 from './img1.jpg';
+import Img2 from './img2.jpg';          
+import Img3 from './img3.jpeg';
+import Img4 from './img4.jpeg';
 
 const HeroSection = ({ openServicesModal }: { openServicesModal: () => void }) => {
   return (
@@ -18,25 +22,28 @@ const HeroSection = ({ openServicesModal }: { openServicesModal: () => void }) =
               At Optifusion Technologies, we create visually stunning and user-focused digital experiences that drive business growth and boost your brand. Our expert team combines creativity with smart technology to deliver innovative solutions tailored to your unique goals. Whether you're launching or scaling, we turn your vision into impactful digital success.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button 
+              <a 
+              href="https://wa.me/9928610677"
+              target="_blank"
+              rel="noopener noreferrer"
                 onClick={openServicesModal}
                 className="btn-primary text-base"
               >
                 Get Started
-              </button>
+              </a>
               <a href="#client-showcase" className="btn-outline text-base">
                 View Our Work
               </a>
             </div>
             <div className="mt-8 flex items-center">
               <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
+                {[Img1, Img2, Img3, Img4].map((i) => (
                   <div 
                     key={i}
                     className="w-10 h-10 rounded-full border-2 border-white bg-[#F4DDC9] flex items-center justify-center overflow-hidden"
                   >
                     <img 
-                      src={`https://randomuser.me/api/portraits/men/${i + 30}.jpg`} 
+                      src={i} 
                       alt="Client" 
                       className="w-full h-full object-cover"
                     />

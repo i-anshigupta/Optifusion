@@ -1,10 +1,12 @@
-import { 
-  Globe, 
-  PenTool, 
-  TrendingUp, 
-  Image, 
-  Layout, 
-  Smartphone 
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import {
+  Globe,
+  PenTool,
+  TrendingUp,
+  Image,
+  Layout,
+  Smartphone
 } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 
@@ -49,19 +51,62 @@ const services = [
 ];
 
 const ServicesList = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Container variants for staggered animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08
+      }
+    }
+  };
+
+  // Item variants for individual card animations
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4
+      }
+    }
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <motion.div 
+      className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 xl:gap-6"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+    >
       {services.map((service, index) => (
-        <ServiceCard 
+        <motion.div
           key={service.title}
-          title={service.title}
-          description={service.description}
-          detailedDescription={service.detailedDescription}
-          Icon={service.icon}
-          index={index}
-        />
+          variants={itemVariants}
+          whileHover={{ 
+            scale: 1.02,
+            transition: { duration: 0.2 } 
+          }}
+          onHoverStart={() => setHoveredIndex(index)}
+          onHoverEnd={() => setHoveredIndex(null)}
+          className="h-full"
+        >
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            detailedDescription={service.detailedDescription}
+            Icon={service.icon}
+            index={index}
+            isActive={hoveredIndex === index}
+          />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

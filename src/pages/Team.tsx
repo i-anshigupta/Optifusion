@@ -22,7 +22,7 @@ const teamMembers = [
   {
     id: 3,
     name: 'Anshika Gupta',
-    role: 'Head of Marketing',
+    role: 'Head of Marketing ABC',
     image: 'https://ik.imagekit.io/6ilngyaqa/1747550732550-WhatsApp_Image_2025-05-18_at_12.15.12_2d6be74a_FrkoEfR0JO.jpg',
     bio: 'Anshika Gupta is the Head of Marketing at Optifusion Technologies, steering the company’s brand strategy, demand-generation campaigns, and digital presence. With a data-driven mindset and a flair for creative storytelling, she crafts marketing initiatives that amplify Optifusion’s voice across global markets, strengthen customer engagement, and fuel sustainable growth.'
   },

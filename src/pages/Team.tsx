@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { useState } from 'react';
 import SectionHeading from '../components/common/SectionHeading';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Team Members Data
 const teamMembers = [
@@ -21,10 +21,10 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: 'Anshika Gupta',
-    role: 'Head of Marketing',
+    name: 'Anshika Gupta ',
+    role: 'Head of Marketing +',
     image: 'https://ik.imagekit.io/6ilngyaqa/1747550732550-WhatsApp_Image_2025-05-18_at_12.15.12_2d6be74a_FrkoEfR0JO.jpg',
-    bio: 'Anshika Gupta is the Head of Marketing at Optifusion Technologies, steering the company’s brand strategy, demand-generation campaigns, and digital presence. With a data-driven mindset and a flair for creative storytelling, she crafts marketing initiatives that amplify Optifusion’s voice across global markets, strengthen customer engagement, and fuel sustainable growth.'
+    bio: 'Anshika Gupta is the Head of Marketing @ Optifusion Technologies, steering the company’s brand strategy, demand-generation campaigns, and digital presence. With a data-driven mindset and a flair for creative storytelling, she crafts marketing initiatives that amplify Optifusion’s voice across global markets, strengthen customer engagement, and fuel sustainable growth.'
   },
   {
     id: 4,
